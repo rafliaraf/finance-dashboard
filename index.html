@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rafli · Finance Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header class="dashboard-header">
+            <h1>💰 Finance Dashboard</h1>
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle tema">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+        </header>
+
+
+        <!-- CARDS SALDO -->
+        <section class="cards">
+            <div class="card card-total">
+                <h3>Total Saldo</h3>
+                <p id="totalBalance">Rp 0</p>
+            </div>
+            <div class="card card-income">
+                <h3>Pemasukan</h3>
+                <p id="totalIncome">Rp 0</p>
+            </div>
+            <div class="card card-expense">
+                <h3>Pengeluaran</h3>
+                <p id="totalExpense">Rp 0</p>
+            </div>
+        </section>
+
+        <!-- FORM TAMBAH TRANSAKSI -->
+        <section class="form-section">
+            <h2><i class="fas fa-plus-circle"></i> Tambah Transaksi</h2>
+            <form id="transactionForm">
+                <input type="text" id="desc" placeholder="Deskripsi (contoh: Makan Siang)" required
+                    aria-label="Deskripsi transaksi" />
+                <input type="number" id="amount" placeholder="Jumlah (contoh: 25000)" required
+                    aria-label="Jumlah transaksi" />
+                <select id="category" aria-label="Kategori transaksi">
+
+                    <option value="Makanan">🍔 Makanan</option>
+                    <option value="Transport">🚗 Transport</option>
+                    <option value="Hiburan">🎬 Hiburan</option>
+                    <option value="Pendidikan">📚 Pendidikan</option>
+                    <option value="Lainnya">📌 Lainnya</option>
+                </select>
+                <select id="type" aria-label="Tipe transaksi">
+                    <option value="income">Pemasukan</option>
+                    <option value="expense">Pengeluaran</option>
+                </select>
+                <input type="date" id="date" required aria-label="Tanggal transaksi" />
+
+                <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Simpan</button>
+            </form>
+        </section>
+
+        <!-- DAFTAR TRANSAKSI -->
+        <section class="transactions-section">
+            <h2><i class="fas fa-list"></i> Riwayat Transaksi</h2>
+            <div class="filter-bar">
+                <input type="text" id="searchInput" placeholder="🔍 Cari transaksi..." />
+                <select id="filterCategory">
+                    <option value="all">Semua Kategori</option>
+                    <option value="Makanan">🍔 Makanan</option>
+                    <option value="Transport">🚗 Transport</option>
+                    <option value="Hiburan">🎬 Hiburan</option>
+                    <option value="Pendidikan">📚 Pendidikan</option>
+                    <option value="Lainnya">📌 Lainnya</option>
+                </select>
+                <button id="exportBtn" class="btn-secondary"><i class="fas fa-file-export"></i> Export CSV</button>
+            </div>
+            <div class="table-wrapper">
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Deskripsi</th>
+                            <th>Kategori</th>
+                            <th>Jumlah</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionBody">
+                        <!-- Data akan di-generate oleh JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- GRAFIK -->
+        <section class="chart-section">
+            <h2><i class="fas fa-chart-pie"></i> Grafik Pengeluaran</h2>
+            <div class="chart-wrapper">
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
