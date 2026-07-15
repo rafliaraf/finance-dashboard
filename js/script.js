@@ -32,11 +32,7 @@ function loadData() {
         }
     } else {
         // Data contoh (bersih, tanpa error)
-        transactions = [
-            { id: Date.now() + 1, date: '2026-07-15', desc: 'Gaji Bulanan', category: 'Pemasukan', amount: 5000000, type: 'income' },
-            { id: Date.now() + 2, date: '2026-07-14', desc: 'Makan Siang', category: 'Makanan', amount: 25000, type: 'expense' },
-            { id: Date.now() + 3, date: '2026-07-13', desc: 'Beli Buku', category: 'Pendidikan', amount: 75000, type: 'expense' },
-        ];
+        transactions = [];
         saveData();
     }
 }
